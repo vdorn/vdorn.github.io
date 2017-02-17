@@ -1,0 +1,63 @@
+body{
+	width:850px;
+	margin: 0 auto;
+}
+
+#theHeader{
+	padding: 25px;
+	background-color:lavender;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 24px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.4px;
+}
+
+#menuBar{
+	padding: 15px;
+	margin: 15px 0px 15px 0px;
+	background-color:lavender;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	font-variant: normal;
+}
+
+#theText{
+	padding: 15px;
+	margin: 15px 0px 15px 0px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 18px;
+}
+
+figcaption{
+	font-style: italic;
+	font-size: 10px;
+}
+
+div.someCode{
+	width: 800px;
+    position: relative;
+	padding: 15px;
+	line-height: .5;
+	border-style: solid;
+	border-radius: 5px;
+	border-width: 2px;
+	border-color: #cccccc;
+	background-color: black;
+	color: #D3D3D3;
+	font-family: "Times New Roman", Georgia, Serif;
+}
+
+a:link    {
+	color:purple; 
+	background-color:transparent; 
+	text-decoration:underline;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	padding-right: 25px;
+}
+a:visited {color:pink; background-color:transparent; text-decoration:none}
+a:hover   {color:red; background-color:transparent; text-decoration:underline}
+a:active  {color:dark purple; background-color:transparent; text-decoration:underline}

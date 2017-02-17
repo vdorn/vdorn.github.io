@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Spotify Web API How-To Guide</title>
+		<link rel="stylesheet" href="style.css" type="text/css">
+	</head>
+	
+	<body>
+	<div id = "theHeader">
+		<h1>Spotify Web API How-To Guide</h1>
+		<h2>By Victoria Dorn</h2>
+	</div>
+	
+	<div id = "menuBar">
+		<a href = "howToindex.html">Home</a>
+		<a href = "page1.html">Part 1</a>
+		<a href = "page2.html">Part 2</a>
+		<a href = "page3.html">Part 3</a>
+		<a href = "page4.html">Part 4</a>
+	</div>
+	
+	<div id = "theText">
+		<h1>Part 2: Using Data from the API</h1>
+		<h2>and Calling the API again...</h2>
+		
+		<p>Ok. So, we have received this data from the Spotify Web API. Now what do we do with it?</p>
+		
+		<div><img src="GetRequest2.jpg"></div>
+		<figcaption><center>Fig2. - Returned data from the album GET request.</center></figcaption>
+		
+		<p>First off, we know that we will be receiving an array of albums from the Spotify database, and we also know
+		 that we would like to seach for that album within the database so that we can find the tracks on that album. To do this
+		  we will grab the album title from the information we just received and store it in a temporary variable.</p>
+		  
+		<div class = "someCode"><p>var target = req.albums.items[0].name;</p></div>
+		
+		<p>This line of code creates the variable target then assigns it the name of the album requested. As you might notice, 
+		there is one additional item that we need to traverse through to get to the album name, items[0]. This is the "container" that the 
+		Spotify database places around the albums sent back to us, the user. Since we are trying to look at the first album returned to us 
+		we will look at items[0].</p>
+		
+		<p>From here, we will conduct another search within the Spotify database for more information on this album. The search will look very similar 
+		to the search that we did for the artists except that the search will be done without using the direct input of the user. We will take this 
+		album name that we just grabbed from the request return and pass it along to the Spotify Web API. To do this, we will need to create another 
+		request. We will also send the data as we did before, but instead of using the artist= parameter we will use the album= parameter. We will also
+		 limit the amount of tracks returned to one, as we will only play back the preview track of the first track on the album.</p>
+		
+		<div class = "someCode"><p>var req2 = new XMLHttpRequest();</p>
+		<p></p>
+		<p>req2.open('GET', "https://api.spotify.com/v1/albums/" + req.albums.items[0].id + "/tracks?limit=1", true);</p>
+		<p>req2.send(null);</p>
+		<p>req.addEventListener('load', function(){</p>
+			<p>&emsp;if(req2.status >= 200 && req2.status < 400){</p>
+				<p>&emsp;&emsp;console.log(JSON.parse(req2.responseText));</p>
+				<p>&emsp;&emsp;req2 = JSON.parse(req2.responseText);</p>
+			<p>&emsp;}</p>
+			<p>&emsp;else{</p>
+			<p>	&emsp;&emsp;console.log("Error in network request: " + req2.statusText);</p>
+			<p>&emsp;}</p>
+		<p>});</p>
+		
+		</div>
+		
+		<p>Up next, playing audio using the information we just received...</p>
+		  
+	</div>
+	
+	</body>
+	
+	<div id = "navButtons">
+		<p><a href = "page1.html">PREVIOUS</a>
+		<a href = "page3.html">NEXT</a></p>
+	</div>
+	
+</html>

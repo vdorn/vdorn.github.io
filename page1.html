@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Spotify Web API How-To Guide</title>
+		<link rel="stylesheet" href="style.css" type="text/css">
+	</head>
+	
+	<body>
+	<div id = "theHeader">
+		<h1>Spotify Web API How-To Guide</h1>
+		<h2>By Victoria Dorn</h2>
+	</div>
+	
+	<div id = "menuBar">
+		<a href = "howToindex.html">Home</a>
+		<a href = "page1.html">Part 1</a>
+		<a href = "page2.html">Part 2</a>
+		<a href = "page3.html">Part 3</a>
+		<a href = "page4.html">Part 4</a>
+	</div>
+	
+	<div id = "theText">
+		<h1> Part 1: Calling the Spotify Web API</h1>
+		
+		<p>For this how-to guide will only be dealing with GET requests. The Spotify Web API has a very large collection of GET requests that you can send it. The first one that we will
+		look at is the SEARCH request. The SEARCH request requires you to send a search string along with the search type (IE: album, artist, etc). What might this look like you ask? Here is an example.</p>
+		
+		<div class = "someCode">
+			<iframe width="100%" height="300" src="//jsfiddle.net/vdorn/dp95towo/embedded/js/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+		</div>
+		
+		<p>So, what I have done here is first create a req variable to hold the data from the request with this line of code: </p>
+		
+		<div class = "someCode">var req = new XMLHttpRequest();</div>
+		
+		<p>After we have created the variable to hold the requested data, we need to send the get request to the Spotify Web API. To do this we use the following code: </p>
+		
+		<div class = "someCode">req.open('GET', "https://api.spotify.com/v1/search?q='"+ theArtist +"'&type=album", true);</div>
+		
+		<p>This code first opens the http request to the api.spotify.com server. Then, it passes it the /search attribute with the q parameter. Q stands for query in this instance.
+		Next, we pass the artist name (enclosed in single quotes). We will figure out how to get the artist name from the user in a bit. Then, we will pass the parameter type with type set 
+		to album as we are searching for an album. Finally, we want to pass true to the open request as we are going to be using asynchrous call to the API. As a note, we are just opening a request 
+		with this statement. We still need to SEND the request. This call is very simple though. To do this we call: </p>
+		
+		<div class = "someCode">req.send(NULL);</div>
+		
+		<p>Now we need to wait on the request. To do this, we want to create a listener event that waits around until the request has gotten data back. This is done by the code that follows: </p>
+		
+		<div class = "someCode"><p>req.addEventListener('load', function(){</p>
+			<p>&emsp;if(req.status >= 200 && req.status < 400){</p>
+				<p>&emsp;&emsp;console.log(JSON.parse(req.responseText));</p>
+				<p>&emsp;&emsp;req = JSON.parse(req.responseText);</p>
+			<p>&emsp;}</p>
+			<p>&emsp;else{</p>
+			<p>	&emsp;&emsp;console.log("Error in network request: " + req.statusText);</p>
+			<p>&emsp;}</p>
+		<p>});</p></div>
+		
+		
+		<p>Back to the main story, from this request we will get back an array filled with all of the albums by the artist. It looks something like this: </p>
+		
+		<div><img src="GetRequest1.jpg"></div>
+		<figcaption><center>Fig1. - Returned data from the artist GET request.</center></figcaption>
+		
+		<p>If you are curious as to where I am getting this cool looking object filled with awesome data. To get this data to show up for yourself, you can console.log the object to the console of your browser. Then use the 
+		inpector tools of your browser to view your console log. The console log call would look something like this: </p>
+		
+		<div class = "someCode">console.log(theObject);</div>
+		
+		<p>Back to the main story... The ARRAY element within the above screenshot contains the albums list. You might be wondering what this lovely array object actually is or you might be an expert on it, but for those 
+		who don't know, the API request that we made to the Spotify Web API has sent us back a JSON object. This is very similar to a JavaScript object. There are key and value pairs within it just
+		like JavaScript objects. There is a bit of converson that needs to happen when we want to use these key/value pairs within JavaScript. To do this we will parse the GET return from the Spotify Web API 
+		with the call: </p>
+		
+		<div class = "someCode">console.log(JSON.parse(req.responseText));</div>
+		
+		<p>Now onto part 2...</p>
+		
+	</div>
+	
+	<div id = "navButtons">
+		<p><a href = "howToindex.html">PREVIOUS</a>
+		<a href = "page2.html">NEXT</a></p>
+	</div>
+	
+	</body>
+</html>

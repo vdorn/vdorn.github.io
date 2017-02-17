@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Spotify Web API How-To Guide</title>
+		<link rel="stylesheet" href="style.css" type="text/css">
+	</head>
+	
+	<body>
+	<div id = "theHeader">
+		<h1>Spotify Web API How-To Guide</h1>
+		<h2>By Victoria Dorn</h2>
+	</div>
+	
+	<div id = "menuBar">
+		<a href = "howToindex.html">Home</a>
+		<a href = "page1.html">Part 1</a>
+		<a href = "page2.html">Part 2</a>
+		<a href = "page3.html">Part 3</a>
+		<a href = "page4.html">Part 4</a>
+	</div>
+	
+	<div id = "theText">
+		<h1>Part 3: Playing Audio</h1>
+		<h2>and pausing it too.</h2>
+		
+		<p>Playing audio within JavaScript is a pretty easy task. We just need to assign an audio object the value of the preview URL that we will retrieve using the track name that we received from our 
+		 album search in part 2. Then, we play the audio. </p>
+		
+		<p> To find the exact object to use to access the preview URL we will once again look at a console.log of the album and track object.</p>
+		
+		<div><img src="GetRequest3.jpg"></div>
+		<figcaption><center>Fig3. - Returned data from the album/track GET request.</center></figcaption>
+		
+		<p>With this information, we can accurately find the preview URL of the track that we would like to play using the trackName.items[0].preview_url object.</p>
+		 
+		<div class = "someCode">
+			<p>var songTarget = audioTrack.items[0].name;</p>
+			<p>audioObject = new Audio(audioTrack.items[0].preview_url);</p>
+			<p>audioObject.play();</p>
+		</div>
+		
+		<p>After this bit of code, audio should play through the speakers or headphones of the computer browsing the page with the attached code.</p>
+		
+		<p>What if we want to be able to pause the audio? How hard is that? With JavaScripts audio object, it is very easy to pause and play audio. It is as simple as another call using our
+		 audioObject that we created in the above code.</p>
+		 
+		 <div class = "someCode">
+			<p>audioObject.pause();</p>
+		</div>
+		
+		<p>Yup. That is it. Now lets move on to the final section and put everything together.</p>
+		
+	</div>
+	
+	</body>
+	
+	<div id = "navButtons">
+		<p><a href = "page2.html">PREVIOUS</a>
+		<a href = "page4.html">NEXT</a></p>
+	</div>
+	
+</html>
