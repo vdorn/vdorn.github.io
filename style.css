@@ -3,6 +3,17 @@ body{
 	margin: 0 auto;
 }
 
+footer{
+	padding: 5px;
+	height: 75;
+	margin: 15px 0px 15px 0px;
+	background-color:lavender;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	font-style: italic;
+	font-variant: normal;
+}
+
 #theHeader{
 	padding: 25px;
 	background-color:lavender;
@@ -17,7 +28,7 @@ body{
 #menuBar{
 	padding: 15px;
 	margin: 15px 0px 15px 0px;
-	background-color:lavender;
+	background-color:#9595ea;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 12px;
 	font-style: normal;
@@ -29,6 +40,15 @@ body{
 	margin: 15px 0px 15px 0px;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 18px;
+}
+
+#navButtons{
+	padding: 10px;
+	background-color:#9595ea;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	font-variant: normal;
 }
 
 figcaption{
@@ -56,8 +76,9 @@ a:link    {
 	text-decoration:underline;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 12px;
+	font-weight: bold;
 	padding-right: 25px;
 }
 a:visited {color:pink; background-color:transparent; text-decoration:none}
-a:hover   {color:red; background-color:transparent; text-decoration:underline}
+a:hover   {color:#191980; background-color:transparent; text-decoration:none; }
 a:active  {color:dark purple; background-color:transparent; text-decoration:underline}
